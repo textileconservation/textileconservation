@@ -9,7 +9,6 @@ use Carp;
 
 post '/spambots' => sub {
   my $network = param "network";
-  my $time = scalar(time);
   `sudo $Texcon::App::base_dir/lib/f2b/bansubnet.pl $network`; #fail2ban handoff
   return template 'error', { title => 'fail2ban handoff', content => "$network subnet submitted" };
 };
