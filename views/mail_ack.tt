@@ -2,7 +2,7 @@
 <p>I will review it and contact you as soon as possible.</p>
 <p>Thank you,</p>
 <p>shelley greenspan<br>
-[% server %]</p>
+[% host_email %]</p>
 <img src="https://[% host %]/images/treelogo40.png" height=34>
 
 

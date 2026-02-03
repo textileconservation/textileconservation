@@ -8,7 +8,7 @@
 <p>Additional expenses might include materials, travel, shipping and insurance.</p>
 <p>The best way to get started is to contact me by email using the link below. If this is inconvenient, you may submit <a href="/contact">this inquiry form</a> as an alternative. If photographs are available they should be sent with your query. This introduction will be followed with further discussion.</p>
 
-<a class="mail link" href="mailto:sg@<% vars.host %>"><p align=right>sg@<% vars.host %></a>&nbsp;&nbsp;
+<a class="mail link" href="mailto:<% vars.host_email %>"><p align=right><% vars.host_email %></a>&nbsp;&nbsp;
 
    </div>
   </div>

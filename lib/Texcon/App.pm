@@ -11,8 +11,8 @@ our $VERSION = '0.1';
 
 our $base_dir = '/var/www/textileconservation.us';
 
+my $host_email_prefix = 'sg@';
 my $upload_dir = "$base_dir/public/files";
-my $server = 'sg@';
 my $disposables = "$base_dir/public/disposable_email_blocklist.conf";
 my $mail_template = Template->new({ INCLUDE_PATH => "$base_dir/views", INTERPOLATE  => 1, }) || die Template->error(),"\n";
 
@@ -22,6 +22,7 @@ my $max_upload = 20971520;
 hook before  => sub {
   var get_time => scalar(time);
   var host => request->host;
+  var host_email => ($host_email_prefix . request->host);
 };
 
 get '/' => sub {
@@ -30,7 +31,7 @@ get '/' => sub {
 
 post '/contact' => sub {
   my $host = request->host;
-  $server .= $host;
+  my $host_email = param "host_email";
   my $post_time = scalar(time);
   my $get_time = param "get_time";
   my $pw = param "pw";
@@ -114,7 +115,7 @@ post '/contact' => sub {
         name => $name,
 	      email => $email,
 	      body => $body,
-	      server => $server,
+	      host_email => $host_email,
         host => $host,
 	      filelist => \@filenames,
 	      filenames => \%filenames,
@@ -126,7 +127,7 @@ post '/contact' => sub {
   try {
     email {
       from    => "$name <$email>",
-      to      => "$server",
+      to      => "$host_email",
       subject => 'textileconservation form submission',
       body    => "$mail_body",
       multipart => 'related',
@@ -143,7 +144,7 @@ post '/contact' => sub {
 
   try {
     email {
-      from    => "shelley greenspan <$server>",
+      from    => "shelley greenspan <$host_email>",
       to      => "$name <$email>",
       subject => 'inquiry acknowledgement',
       body    => "$mail_ack",
