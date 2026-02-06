@@ -31,7 +31,7 @@ get '/' => sub {
 
 post '/contact' => sub {
   my $host = request->host;
-  my $host_email = param "host_email";
+  my $host_email = $host_email_prefix . $host;
   my $post_time = scalar(time);
   my $get_time = param "get_time";
   my $pw = param "pw";
