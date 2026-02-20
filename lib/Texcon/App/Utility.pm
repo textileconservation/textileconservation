@@ -23,6 +23,11 @@ get '/spambots' => sub {
   my $subnet_bans;
   map { $ip_bans->{$_} = 1 } @$ipbans;
   map { $subnet_bans->{$_} = 1 } @$subnetbans;
+  foreach (keys %$ip_bans) {
+    my $subnet = $_;
+    $subnet =~ s/^(\d+\.\d+\.\d+)\.\d+$/$1/;
+    delete $ip_bans->{$_} if $subnet_bans->{$subnet};
+}
 
   my $botgeo = retrieve("$Texcon::App::base_dir/public/bans/botgeo.txt");
   my $iana = Net::Whois::IANA->new;
