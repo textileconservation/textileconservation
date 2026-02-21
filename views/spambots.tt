@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-        <div class="column column-no-border"><strong>date/time</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span class="dot"></span>&nbsp;bans:&nbsp;n<% bans.first %>&nbsp;h<% bans.last %></div>
+        <div class="column column-no-border"><strong>date/time</strong>&nbsp;&nbsp;&nbsp;&nbsp;bans:&nbsp;<span class="dot"></span>&nbsp;n<% bans.first %>&nbsp;&nbsp;<span class="dot2"></span>&nbsp;h<% bans.last %></div>
         <div class="column column-no-border">ip&nbsp;&nbsp;&nbsp;&nbsp;<strong>visits</strong>&nbsp;&nbsp;&nbsp;&nbsp;duration</div>
         <div class="column column-no-border">country</div>
     </div>
@@ -42,8 +42,10 @@
     <div class="row">
         <div class="column column-no-border"><strong><% id.dateip %></strong>
 
-        <% IF id.subnetban == 1 || id.ipban == 1 %> 
-                &nbsp;<span class="dot"></span>
+        <% IF id.subnetban == 1 %>&nbsp;<span class="dot"></span>
+        <% END %>
+
+        <% IF id.ipban == 1 %>&nbsp;<span class="dot2"></span>
         <% END %>
 
         </div>
