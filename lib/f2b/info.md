@@ -2,5 +2,5 @@
 
 /etc/sudoers.d/www-data:
 ```
-www-data ALL=(ALL) NOPASSWD:/var/www/textileconservation.us/lib/f2b/banlist.pl,/var/www/textileconservation.us/lib/f2b/bansubnet.pl,/var/www/textileconservation.us/lib/f2b/banip.pl
+www-data ALL=(ALL) NOPASSWD:/var/www/textileconservation.us/lib/f2b/banlist.pl,/var/www/textileconservation.us/lib/f2b/bansubnet.pl,/var/www/textileconservation.us/lib/f2b/banip.pl,/var/www/textileconservation.us/lib/f2b/unbansubnet.pl,/var/www/textileconservation.us/lib/f2b/unbanip.pl
 ```

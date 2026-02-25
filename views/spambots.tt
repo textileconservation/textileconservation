@@ -42,10 +42,14 @@
     <div class="row">
         <div class="column column-no-border"><strong><% id.dateip %></strong>
 
-        <% IF id.subnetban == 1 %>&nbsp;<span class="dot"></span>
+        <% IF id.subnetban == 1 %>
+            &nbsp;
+            <button type="submit" name="unbansubnet" value="<% id.ip %>" class="button button-clear2"><span class="dot"></span></button>
         <% END %>
 
-        <% IF id.ipban == 1 %>&nbsp;<span class="dot2"></span>
+        <% IF id.ipban == 1 %>
+            &nbsp;
+            <button type="submit" name="unbanip" value="<% id.ip %>" class="button button-clear2"><span class="dot2"></span></button>
         <% END %>
 
         </div>

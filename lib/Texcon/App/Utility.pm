@@ -9,8 +9,20 @@ use Carp;
 
 post '/spambots' => sub {
   my $network = param "network";
-  `sudo $Texcon::App::base_dir/lib/f2b/bansubnet.pl $network`; #fail2ban handoff
-  return template 'error', { title => 'fail2ban handoff', content => "$network subnet submitted" };
+  my $unbansubnet = param "unbansubnet";
+  my $unbanip =  param "unbanip";
+  if ( $network ) {
+    `sudo $Texcon::App::base_dir/lib/f2b/bansubnet.pl $network`; #fail2ban handoff
+    return template 'error', { title => 'fail2ban handoff', content => "$network subnet submitted" };
+  }
+  if ( $unbansubnet ) {
+    `sudo $Texcon::App::base_dir/lib/f2b/unbansubnet.pl $unbansubnet`; #fail2ban handoff
+    return template 'error', { title => 'fail2ban handoff', content => "$unbansubnet unban submitted" };
+  }
+  if ( $unbanip ) {
+    `sudo $Texcon::App::base_dir/lib/f2b/unbanip.pl $unbanip`; #fail2ban handoff
+    return template 'error', { title => 'fail2ban handoff', content => "$unbanip unban submitted" };
+  }
 };
 
 get '/spambots' => sub {
@@ -23,11 +35,6 @@ get '/spambots' => sub {
   my $subnet_bans;
   map { $ip_bans->{$_} = 1 } @$ipbans;
   map { $subnet_bans->{$_} = 1 } @$subnetbans;
-  foreach (keys %$ip_bans) {
-    my $subnet = $_;
-    $subnet =~ s/^(\d+\.\d+\.\d+)\.\d+$/$1/;
-    delete $ip_bans->{$_} if $subnet_bans->{$subnet};
-}
 
   my $botgeo = retrieve("$Texcon::App::base_dir/public/bans/botgeo.txt");
   my $iana = Net::Whois::IANA->new;
