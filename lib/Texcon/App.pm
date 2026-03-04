@@ -58,7 +58,8 @@ post '/contact' => sub {
       `sudo $base_dir/lib/f2b/banip.pl $address`;
     }
     error "$address; gt:$get_time; pt:$post_time; n:$name; e:$email; bot:$bot; b:$body";
-    return template 'error', { title => 'thank you', content => 'inquiry processed' };
+    # return template 'error', { title => 'thank you', content => 'inquiry processed' };
+    return template '400';
   }
 
   my $path;
