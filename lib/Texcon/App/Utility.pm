@@ -7,27 +7,25 @@ use Storable;
 use Try::Tiny;
 use Carp;
 
-my $secretroute = '/spambots';
+my $route = '/spambots';
 
-post $secretroute => sub {
+post $route => sub {
   my $network = param "network";
   my $unbansubnet = param "unbansubnet";
   my $unbanip =  param "unbanip";
   if ( $network ) {
     `sudo $Texcon::App::base_dir/lib/f2b/bansubnet.pl $network`; #fail2ban handoff
-    redirect $secretroute;
   }
   if ( $unbansubnet ) {
     `sudo $Texcon::App::base_dir/lib/f2b/unbansubnet.pl $unbansubnet`; #fail2ban handoff
-    redirect $secretroute;
   }
   if ( $unbanip ) {
     `sudo $Texcon::App::base_dir/lib/f2b/unbanip.pl $unbanip`; #fail2ban handoff
-    redirect $secretroute;
   }
+  redirect $route;
 };
 
-get $secretroute => sub {
+get $route => sub {
   foreach ("texcon","texcon-subnet") {
     `sudo $Texcon::App::base_dir/lib/f2b/banlist.pl $_`;
   }
