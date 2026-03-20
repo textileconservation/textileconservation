@@ -10,17 +10,17 @@ use Carp;
 my $route = '/spambots';
 
 post $route => sub {
-  my $network = param "network";
+  my $bansubnet = param "bansubnet";
   my $unbansubnet = param "unbansubnet";
   my $unbanip =  param "unbanip";
-  if ( $network ) {
-    `sudo $Texcon::App::base_dir/lib/f2b/bansubnet.pl $network`; #fail2ban handoff
+  if ( $bansubnet ) {
+    `sudo $Texcon::App::base_dir/lib/f2b/bansubnet.pl $bansubnet`; #f2b texcon-subnet ban
   }
   if ( $unbansubnet ) {
-    `sudo $Texcon::App::base_dir/lib/f2b/unbansubnet.pl $unbansubnet`; #fail2ban handoff
+    `sudo $Texcon::App::base_dir/lib/f2b/unbansubnet.pl $unbansubnet`; #f2b texcon-subnet unban
   }
   if ( $unbanip ) {
-    `sudo $Texcon::App::base_dir/lib/f2b/unbanip.pl $unbanip`; #fail2ban handoff
+    `sudo $Texcon::App::base_dir/lib/f2b/unbanip.pl $unbanip`; #f2b texcon unban
   }
   redirect $route;
 };

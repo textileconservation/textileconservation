@@ -59,7 +59,7 @@
                 <% IF id.subnetban %>
                     <strong><% id.network %></strong>
                 <% ELSE %>
-                    <button type="submit" name="network" value="<% id.ip %>" class="button button-clear2"><% id.network %></button>
+                    <button type="submit" name="bansubnet" value="<% id.ip %>" class="button button-clear2"><% id.network %></button>
                 <% END %>
                 <% id.host %>&nbsp;&nbsp;
             <% ELSE %>
