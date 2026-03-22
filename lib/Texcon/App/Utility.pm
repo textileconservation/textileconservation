@@ -90,6 +90,9 @@ get $route => sub {
           @$_{subnetban} = $subnet_bans->{@$_{network}}
       } @data;
 
+  foreach (keys %$botgeo) {
+    delete $botgeo->{$_} unless defined $botgeo->{$_};
+  }
   store ($botgeo, "$Texcon::App::base_dir/public/bans/botgeo.txt");
 
   my $subban_total = keys %{ $subnet_bans };

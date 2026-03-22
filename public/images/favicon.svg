@@ -7,7 +7,7 @@
 	<path fill="black" d="M111.6,240.9c-6.2,5.2-13.5,7.9-21.9,7.9-15.7,0-23.6-11.7-23.6-30.4v-55.8h-14.5v-6.3h14.5v-32h6.1v32h36.5v6.3h-36.5v55.3c0,16.1,6.2,24.7,18,24.7s13.2-2.2,18.6-6.8l2.9,5.1Z"/>
 	<path fill="black" d="M139.2,235.6c-7.6-9-11.4-20.3-11.4-34s4-25.4,11.7-34.2c7.9-9,18-13.4,30-13.4s30,8.8,36.2,23.2l-5,3c-5.3-12.2-17.2-20-31.2-20s-18.9,3.9-25.6,11.5c-6.7,7.6-10,17.6-10,29.8s3.2,22,9.7,29.6c6.5,7.6,14.9,11.3,25,11.3s26.2-8.1,31.8-20.1l4.9,3.4c-6.7,14.2-20.8,23-36.7,23s-21.6-4.4-29.4-13.2Z"/>
     <style>
-      @media (prefers-color-scheme: light) { :root { filter: none; } }
-      @media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }
+      @media (prefers-color-scheme: light) { :root { filter: brightness(0.8); } }
+      @media (prefers-color-scheme: dark) { :root { filter: invert(100%) brightness(1.3); } }
     </style>
 </svg>
