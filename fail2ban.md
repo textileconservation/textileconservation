@@ -1,12 +1,12 @@
 #### fail2ban use
 
-sg textile conservation is a static site of four routes. One of the routes has a mail form that attracts spam.
+sg textile conservation is a static site of four routes. One of the routes (contact) has a mail form that attracts spam.
 
-Spam detection/banning is accomplished using timing and trap values in the mail form that trigger fail2ban processing. Ancillary use of fail2ban simplifies the management of ban durations.
+Spam detection/banning is accomplished using timing and trap values in the mail form that trigger fail2ban processing.
 
-A separate utility route displays the ban log and enables bans of recurring ip subnets.
+Banning is logged using the dancer2 'file' logging engine. An additional utility route displays the ban log and enables ban expansion and cancellation.
 
-Banning is logged using dancer2's built-in 'file' logging engine. Durations are configured using separate fail2ban jails.
+Ancillary use of fail2ban simplifies the management of ban durations. Durations are configured using separate fail2ban jails for ips and /24 subnets.
 
 #### jail.local
 ```
