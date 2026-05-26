@@ -4,7 +4,7 @@ sg textile conservation is a static site of four routes. One of the routes (cont
 
 Spam detection/banning is accomplished using timing and trap values in the mail form that trigger fail2ban processing.
 
-Banning is logged using the dancer2 'file' logging engine. An additional utility route displays the ban log and enables ban expansion and cancellation.
+Banning is logged using the dancer2 'file' logging engine. An additional utility route displays the log and enables ban expansions and cancellations.
 
 Ancillary use of fail2ban simplifies the management of ban durations. Durations are configured using separate fail2ban jails for ips and /24 subnets.
 
